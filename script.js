@@ -1,3 +1,23 @@
+var printDate;
+var date;
+var day;
+var month;
+var year;
+
+let locationSearch = document.getElementById('city-search').value;
+
+window.addEventListener('load', (event) => {
+    //load date
+    printDate = document.getElementById('date');
+    date = new Date();
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+
+    let currentDate = `${month}/${day}/${year}`;
+    printDate.innerText = currentDate;
+});
+
 console.log('🌙');
 
 fetch(
@@ -6,15 +26,6 @@ fetch(
 )
     .then(function (response) {
         return response.json();
-    })
-    .then(function (response) {
-        console.log(response.current.condition.text);
-    })
-    .then(function (response) {
-        console.log(response.current.temp_c);
-    })
-    .then(function (response) {
-        console.log(response.current.temp_f);
     })
     .then(function (response) {
         console.log(response);
