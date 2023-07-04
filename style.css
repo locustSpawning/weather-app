@@ -1,0 +1,32 @@
+/* VARIABLES DECLARATION ON ROOT */
+
+:root {
+    --background-light: rgba(0, 0, 0, 0.6);
+    --background-dark: rgba(0, 0, 0, 0.7);
+}
+
+/* COMMON STYLING */
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    overflow: auto;
+    background: url(images/background.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
