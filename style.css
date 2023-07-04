@@ -3,24 +3,29 @@
 :root {
     --background-light: rgba(0, 0, 0, 0.6);
     --background-dark: rgba(0, 0, 0, 0.7);
+    --pink: #f28dab;
 }
 
 /* COMMON STYLING */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
         'Lucida Sans', Arial, sans-serif;
+    color: white;
 }
 
 html,
 body {
-    height: 100%;
+    height: 100vh;
+    width: 100%;
+    font-size: 25px;
 }
+
 body {
     min-height: 100vh;
-    margin: 0;
     overflow: hidden;
     overflow: auto;
     background: url(images/background.jpg);
@@ -29,4 +34,106 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/* MAIN STYLING */
+
+header,
+footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#location {
+    font-size: 70px;
+}
+
+#date {
+    font-size: 55px;
+}
+
+#main-weather-display-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: 100%;
+}
+
+#general-info {
+    background-color: var(--background-light);
+    padding: 20px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+#condition {
+    font-size: 60px;
+}
+#degrees {
+    font-size: 50px;
+}
+
+#search-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#city-search {
+    padding: 0.5em;
+    height: 40px;
+    width: 560px;
+    border-radius: 6px;
+    color: black;
+    font-size: 20px;
+}
+
+#form-group {
+    margin-bottom: 30px;
+}
+
+#submit-btn,
+#degree-btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 25px;
+    border-radius: 6px;
+}
+
+#submit-btn {
+    background-color: var(--background-light);
+    height: 40px;
+    width: 120px;
+}
+
+#submit-btn:hover,
+#degree-btn:hover {
+    background-color: black;
+}
+
+#submit-btn:active,
+#degree-btn:active {
+    background-color: var(--pink);
+}
+#error-msg {
+    /*display: none; */
+    font-size: 20px;
+    padding: 0 0 5px 5px;
+    color: var(--pink);
+}
+
+#degree-btn {
+    background-color: var(--background-light);
+    height: 50px;
+    width: 700px;
 }

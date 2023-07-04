@@ -6,10 +6,43 @@
         <title>|Weather|</title>
         <link
             rel="icon"
-            href="https://em-content.zobj.net/thumbs/120/google/350/umbrella_2602-fe0f.png"
+            href="https://em-content.zobj.net/thumbs/120/google/350/droplet_1f4a7.png"
         />
         <link rel="stylesheet" href="style.css" />
         <script defer src="script.js"></script>
     </head>
-    <body></body>
+    <body>
+        <header>
+            <h1 id="location">Tokyo, Japan</h1>
+            <h2 id="date">07/04/2023</h2>
+        </header>
+        <div id="main-weather-display-info">
+            <div id="general-info">
+                <p id="condition">MOSTLY SUNNY</p>
+                <span id="degrees">70</span>
+
+                <div id="weather-details info">
+                    <p id="feels-like">FEELS LIKE: 72</p>
+                    <p id="wind-mph">WIND: 5 MPH</p>
+                    <p id="humidity">HUMIDITY: 70</p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <form>
+                <div id="form-group">
+                    <p id="error-msg">No matching location found!</p>
+                    <div id="search-group">
+                        <input
+                            id="city-search"
+                            type="text"
+                            placeholder="Search city"
+                        />
+                        <button id="submit-btn">Search!</button>
+                    </div>
+                </div>
+            </form>
+            <button id="degree-btn">Celsius</button>
+        </footer>
+    </body>
 </html>
