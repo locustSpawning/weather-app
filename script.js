@@ -23,10 +23,26 @@ const submitBtn = document.querySelector('#submit-btn');
 const error = document.querySelector('#error-msg');
 form.addEventListener('submit', handleSubmit);
 submitBtn.addEventListener('click', handleSubmit);
+const degreeBtn = document.getElementById('degree-btn');
+degreeBtn.addEventListener('click', toggleDegree);
 
 function handleSubmit(e) {
     e.preventDefault();
     fetchWeather();
+}
+
+function toggleDegree(e) {
+    if (degreeBtn.classList.contains('F')) {
+        degreeBtn.classList.remove('F');
+        degreeBtn.classList.add('C');
+        degreeBtn.innerText = 'Celsius';
+        degreeBtn.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+    } else {
+        degreeBtn.classList.remove('C');
+        degreeBtn.classList.add('F');
+        degreeBtn.innerText = 'Fahrenheit';
+        degreeBtn.style.backgroundColor = '#f28dab';
+    }
 }
 
 async function getWeatherData(location) {
@@ -68,7 +84,10 @@ function processData(weatherData) {
 
     //if in the US, add state
     //if not, add ccountry
-    if (weatherData.location.country == 'USA United States of America') {
+    if (
+        weatherData.location.country == 'USA United States of America' ||
+        weatherData.location.country == 'United States of America'
+    ) {
         myData['region'] = weatherData.location.region.toUpperCase();
     } else {
         myData['region'] = weatherData.location.country.toUpperCase();
@@ -80,16 +99,27 @@ function processData(weatherData) {
 function displayData(newData) {
     const weatherInfo = document.getElementsByClassName('info');
 
+    if (degreeBtn.classList.contains('F')) {
+        document.querySelector(
+            '#degrees'
+        ).textContent = `${newData.currentTemp.f} ° F`;
+        document.querySelector(
+            '#feels-like'
+        ).textContent = `Feels like ${newData.feelsLike.f} °F`;
+    } else {
+        document.querySelector(
+            '#degrees'
+        ).textContent = `${newData.currentTemp.c} ° C`;
+        document.querySelector(
+            '#feels-like'
+        ).textContent = `Feels like ${newData.feelsLike.c} °C`;
+    }
+
     document.querySelector('#condition').textContent = `${newData.condition}`;
     document.querySelector(
         '#location'
     ).textContent = `${newData.location}, ${newData.region}`;
-    document.querySelector(
-        '#degrees'
-    ).textContent = `${newData.currentTemp.f} ° F`;
-    document.querySelector(
-        '#feels-like'
-    ).textContent = `Feels like ${newData.feelsLike.f} °F`;
+
     document.querySelector(
         '#wind-mph'
     ).textContent = `Wind: ${newData.wind}mph`;
