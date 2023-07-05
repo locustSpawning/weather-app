@@ -84,7 +84,7 @@ function displayData(newData) {
     document.querySelector(
         '#location'
     ).textContent = `${newData.location}, ${newData.region}`;
-    document.querySelector('#degrees'), (textContent = newData.currentTemp.f);
+    document.querySelector('#degrees').textContent = `${newData.currentTemp.f}`;
     document.querySelector(
         '#feels-like'
     ).textContent = `Feels like ${newData.feelsLike.f}`;
