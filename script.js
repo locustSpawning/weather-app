@@ -52,7 +52,7 @@ function throwErrorMsg() {
 function processData(weatherData) {
     //grab all data to display on page
     const myData = {
-        condition: weatherData.current.text,
+        condition: weatherData.current.condition.text,
         feelsLike: {
             f: Math.round(weatherData.current.feelslike_f),
             c: Math.round(weatherData.current.feelslike_c),
@@ -68,7 +68,7 @@ function processData(weatherData) {
 
     //if in the US, add state
     //if not, add ccountry
-    if (weatherData.location.country == 'United States of America') {
+    if (weatherData.location.country == 'USA United States of America') {
         myData['region'] = weatherData.location.region.toUpperCase();
     } else {
         myData['region'] = weatherData.location.country.toUpperCase();
@@ -80,7 +80,7 @@ function processData(weatherData) {
 function displayData(newData) {
     const weatherInfo = document.getElementsByClassName('info');
 
-    document.querySelector('#condition').textContent = newData.condition;
+    document.querySelector('#condition').textContent = `${newData.condition}`;
     document.querySelector(
         '#location'
     ).textContent = `${newData.location}, ${newData.region}`;
