@@ -37,7 +37,7 @@ async function getWeatherData(location) {
     if (response.status === 400) {
         throwErrorMsg();
     } else {
-        error.computedStyleMap.display = 'none';
+        error.style.display = 'none';
         const weatherData = await response.json();
         const newData = processData(weatherData);
         displayData(newData);
@@ -46,7 +46,7 @@ async function getWeatherData(location) {
 }
 
 function throwErrorMsg() {
-    error.computedStyleMap.display = 'block';
+    error.style.display = 'block';
 }
 
 function processData(weatherData) {
@@ -84,16 +84,18 @@ function displayData(newData) {
     document.querySelector(
         '#location'
     ).textContent = `${newData.location}, ${newData.region}`;
-    document.querySelector('#degrees').textContent = `${newData.currentTemp.f}`;
+    document.querySelector(
+        '#degrees'
+    ).textContent = `${newData.currentTemp.f} ° F`;
     document.querySelector(
         '#feels-like'
-    ).textContent = `Feels like ${newData.feelsLike.f}`;
+    ).textContent = `Feels like ${newData.feelsLike.f} °F`;
     document.querySelector(
         '#wind-mph'
     ).textContent = `Wind: ${newData.wind}mph`;
     document.querySelector(
         '#humidity'
-    ).textContent = `Humidity: ${newData.humidity}`;
+    ).textContent = `Humidity: ${newData.humidity} %`;
 }
 
 function reset() {
